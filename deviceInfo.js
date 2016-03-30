@@ -22,8 +22,9 @@ function handleRequest(req, res){
         })
         .then(function(devicesList){
             devicesList.forEach(function(deviceInfo){
-              var model = deviceInfo['ro.product.model'];
-              res.write(model + '</br>');
+              res.write('Name: ' + deviceInfo['ro.product.model'] + ' | ');
+              res.write('Android Version: ' + deviceInfo['ro.build.version.release'] + ' | ');              
+              res.write('</br>');
             })
             res.end();
         });
