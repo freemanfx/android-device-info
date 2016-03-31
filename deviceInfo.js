@@ -1,16 +1,20 @@
-var exec = require('child_process').exec;
 var http = require('http');
 var adb = require('adbkit');
 var client = adb.createClient();
+var express = require('express');
+var app = express();
 
 const HTTP_PORT = '9900';
-var deviceListingCmd = 'adb devices -l';
+var deviceLog = [];
 
+function displayLog(res){
+  res.write('Devices log: </br>')
+  deviceLog.forEach(function(entry){
+    res.write(entry + '</br>');
+  })
+}
 
 function handleRequest(req, res){
-  // exec(deviceListingCmd, function(error, stdout, stderr){
-  //   response.end(stdout);
-  // });
   res.writeHead(200, {
     'Content-Type': 'text/html',
     'Expires': new Date().toUTCString()
@@ -26,13 +30,27 @@ function handleRequest(req, res){
               res.write('Android Version: ' + deviceInfo['ro.build.version.release'] + ' | ');
               res.write('</br>');
             })
-            res.end();
+        })
+        .then(function(){
+          res.end();
+        });
+
+  client.trackDevices()
+        .then(function(tracker){
+          tracker.on('add', function(device){
+            deviceLog.push('Device added: '+ device.id);
+          });
+
+          tracker.on('remove', function(device){
+            deviceLog.push('Device removed: '+ device.id);
+          })
         });
 }
-
-var server = http.createServer(handleRequest);
-server.listen(HTTP_PORT);
 
 function getDeviceInfo(device){
   return client.getProperties(device.id);
 }
+
+app.get('/', handleRequest);
+
+app.listen(HTTP_PORT);
