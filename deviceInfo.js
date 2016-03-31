@@ -3,7 +3,7 @@ var http = require('http');
 var adb = require('adbkit');
 var client = adb.createClient();
 
-const HTTP_PORT = '9000';
+const HTTP_PORT = '9900';
 var deviceListingCmd = 'adb devices -l';
 
 
@@ -23,7 +23,7 @@ function handleRequest(req, res){
         .then(function(devicesList){
             devicesList.forEach(function(deviceInfo){
               res.write('Name: ' + deviceInfo['ro.product.model'] + ' | ');
-              res.write('Android Version: ' + deviceInfo['ro.build.version.release'] + ' | ');              
+              res.write('Android Version: ' + deviceInfo['ro.build.version.release'] + ' | ');
               res.write('</br>');
             })
             res.end();
