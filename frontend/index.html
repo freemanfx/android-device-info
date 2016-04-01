@@ -12,6 +12,11 @@
     <div ng-repeat="device in devices" ng-cloak>
       {{device['ro.product.model']}}
     </div>
+
+    Device logs:
+    <div ng-repeat="log in deviceLogs">
+      Device with id {{log.device.id}} was {{getEvent(log)}}
+    </div>
   </div>
 </body>
 </html>
