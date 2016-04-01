@@ -8,7 +8,10 @@
 </head>
 <body ng-app="app">
   <div ng-controller="DevicesController">
-    {{hello}}
+    List of devices:
+    <div ng-repeat="device in devices" ng-cloak>
+      {{device['ro.product.model']}}
+    </div>
   </div>
 </body>
 </html>

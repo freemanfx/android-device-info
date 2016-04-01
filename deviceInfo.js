@@ -3,6 +3,7 @@ var adb = require('adbkit');
 var client = adb.createClient();
 var express = require('express');
 var app = express();
+var cors = require('cors');
 
 const HTTP_PORT = '9900';
 var deviceLog = [];
@@ -51,6 +52,20 @@ function getDeviceInfo(device){
   return client.getProperties(device.id);
 }
 
+function getDevicesList(req, res){
+  client.listDevices()
+        .map(function(device){
+          return getDeviceInfo(device);
+        })
+        .then(function(devicesList){
+          res.json(devicesList);
+          res.end();
+        });
+
+}
+
+app.use(cors());
 app.get('/', handleRequest);
+app.get('/devicesList', getDevicesList);
 
 app.listen(HTTP_PORT);
