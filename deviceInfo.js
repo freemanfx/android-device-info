@@ -11,13 +11,20 @@ var deviceLog = [];
 client.trackDevices()
         .then(function(tracker){
           tracker.on('add', function(device){
-            deviceLog.push({eventType: 'add', device: device});
+            log('add', device);
           });
 
           tracker.on('remove', function(device){
-            deviceLog.push({eventType: 'remove', device: device});
+            log('remove', device);
           })
         });
+
+function log(eventType, device){
+  getDeviceInfo(device)
+    .then(function(deviceInfo){
+      deviceLog.push({eventType: eventType, device: device, deviceInfo: deviceInfo});
+    });
+}
 
 function getDeviceInfo(device){
   return client.getProperties(device.id);
