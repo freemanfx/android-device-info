@@ -14,10 +14,15 @@
     });
   }]);
 
-  app.controller('DevicesController', ['$scope', 'DeviceService', 'DeviceLogService',
-      function($scope, DeviceService, DeviceLogService){
-          $scope.devices = DeviceService.get();
-          $scope.deviceLogs = DeviceLogService.get();
+  app.controller('DevicesController', ['$scope', 'DeviceService', 'DeviceLogService', 'constants',
+      function($scope, DeviceService, DeviceLogService, constants){
+          function loadData(){
+            $scope.devices = DeviceService.get();
+            $scope.deviceLogs = DeviceLogService.get();
+          }
+
+          loadData();
+          setInterval(loadData, constants.REFRESH_INTERVAL);
 
           $scope.getEvent = function(log){
             switch (log.eventType) {

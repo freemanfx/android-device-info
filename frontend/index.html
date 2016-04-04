@@ -16,7 +16,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <h4>Connected devices</h4>
-          <div ng-repeat="device in devices" ng-cloak>
+          <div ng-repeat="device in devices">
             {{device['ro.product.manufacturer']}} {{device['ro.product.model']}}
           </div>
           <h5>Device count: {{devices.length}}</h5>
