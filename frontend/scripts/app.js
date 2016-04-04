@@ -1,16 +1,15 @@
 (function(){
   var app = angular.module('app', ['ngResource']);
-  const NODE_SERVER = 'http://localhost:9900';
 
-  app.service('DeviceService', ['$resource', function($resource){
-    const API_ENDPOINT = NODE_SERVER + '/deviceList';
+  app.service('DeviceService', ['$resource','constants', function($resource, constants){
+    const API_ENDPOINT = constants.NODE_SERVER + '/deviceList';
     return $resource(API_ENDPOINT, {}, {
       get: {method: 'GET', isArray: 'true'}
     });
   }]);
 
-  app.service('DeviceLogService', ['$resource', function($resource){
-    return $resource(NODE_SERVER + '/deviceLog', {}, {
+  app.service('DeviceLogService', ['$resource', 'constants', function($resource, constants){
+    return $resource(constants.NODE_SERVER + '/deviceLog', {}, {
       get: {method: 'GET', isArray: 'true'}
     });
   }]);
