@@ -5,17 +5,33 @@
   <script src="bower_components/angular-resource/angular-resource.min.js"></script>
 
   <script src="scripts/app.js"></script>
+
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body ng-app="app">
+<body ng-app="app" class="container">
   <div ng-controller="DevicesController">
-    List of devices:
-    <div ng-repeat="device in devices" ng-cloak>
-      {{device['ro.product.model']}}
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>Connected devices</h4>
+          <div ng-repeat="device in devices" ng-cloak>
+            {{device['ro.product.model']}}
+          </div>
+          <h5>Device count: {{devices.length}}</h5>
+        </div>
+      </div>
     </div>
 
-    Device logs:
-    <div ng-repeat="log in deviceLogs">
-      Device with id {{log.device.id}} was {{getEvent(log)}}
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>Device logs</h4>
+          <div ng-repeat="log in deviceLogs">
+            Device with id {{log.device.id}} was {{getEvent(log)}}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
