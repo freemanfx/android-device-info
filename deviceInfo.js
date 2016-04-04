@@ -20,10 +20,7 @@ client.trackDevices()
         });
 
 function log(eventType, device){
-  getDeviceInfo(device)
-    .then(function(deviceInfo){
-      deviceLog.push({eventType: eventType, device: device, deviceInfo: deviceInfo});
-    });
+    deviceLog.push({eventType: eventType, device: device});  
 }
 
 function getDeviceInfo(device){

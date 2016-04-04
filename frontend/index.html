@@ -29,7 +29,7 @@
         <div class="panel-body">
           <h4>Device logs</h4>
           <div ng-repeat="log in deviceLogs">
-            {{log.deviceInfo['ro.product.model']}} was {{getEvent(log)}}
+            Device with id {{log.device.id}} was {{getEvent(log)}}
           </div>
         </div>
       </div>
