@@ -1,7 +1,18 @@
+* {
+  color: white;
+}
+
 body {
   background-color: #333333;
 }
 
 .container {
-  margin-top: 100px;
+  margin-top: 50px;
+}
+
+.headline {
+  margin-bottom: 50px;
+}
+.panel-body {
+  color: black;
 }
