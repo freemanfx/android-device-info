@@ -1,6 +1,6 @@
 {
   "name": "android-device-info",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Info radiator on connected android devices using info from adb",
   "main": "deviceInfo.js",
   "dependencies": {
