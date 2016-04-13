@@ -20,7 +20,7 @@
         <div class="panel-body">
           <h4>Connected devices</h4>
           <div ng-repeat="device in devices">
-            {{device['ro.product.manufacturer']}} {{device['ro.product.model']}} <p class="pull-right">Android {{device['ro.build.version.release']}}</p>
+            {{device['ro.product.manufacturer']}} {{device['ro.product.model']}} <span class="pull-right">Android {{device['ro.build.version.release']}}</span>
           </div>
           <h5>Device count: {{devices.length}}</h5>
         </div>
