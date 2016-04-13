@@ -1,5 +1,5 @@
 * {
-  color: white;
+  color: black;
 }
 
 body {
@@ -12,7 +12,5 @@ body {
 
 .headline {
   margin-bottom: 50px;
-}
-.panel-body {
-  color: black;
+  color: white;
 }
