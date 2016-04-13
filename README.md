@@ -1,6 +1,6 @@
 # android-device-info
 
-Simple Androi ADB device monitoring
+Simple Android ADB device monitoring
 
 Consists of two components
 * Server with REST API running in NodeJS
