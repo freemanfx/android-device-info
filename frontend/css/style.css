@@ -14,3 +14,8 @@ body {
   margin-bottom: 50px;
   color: white;
 }
+
+.logs {
+  overflow-y: scroll;
+  max-height: 300px;
+}
