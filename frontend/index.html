@@ -20,7 +20,7 @@
         <div class="panel-body">
           <h4>Connected devices</h4>
           <div ng-repeat="device in devices">
-            {{device['ro.product.manufacturer']}} {{device['ro.product.model']}} <span class="pull-right">Android {{device['ro.build.version.release']}}</span>
+            {{device['ro.product.manufacturer']}} {{device['ro.product.model']}} <span class="serialNo">{{device['ro.serialno']}}</span><span class="pull-right">Android {{device['ro.build.version.release']}}</span>
           </div>
           <h5>Device count: {{devices.length}}</h5>
         </div>
@@ -32,7 +32,7 @@
         <div class="panel-body logs">
           <h4>Device logs</h4>
           <div ng-repeat="log in deviceLogs">
-            Device with id {{log.device.id}} was {{getEvent(log)}}
+            Device <span class="serialNo">{{log.device.id}}</span> was {{getEvent(log)}}
           </div>
         </div>
       </div>

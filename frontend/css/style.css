@@ -19,3 +19,7 @@ body {
   overflow-y: scroll;
   max-height: 300px;
 }
+
+.serialNo {
+  color: red;
+}
